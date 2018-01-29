@@ -1,0 +1,21 @@
+#if you have ancestry, then you can get unfolded SFS, but if you haven't, it doesn't matter, you can get folded SFS
+###########################
+#get unfolded SFS
+##########################
+#my outgroup is outgroup.align.bam which i get from GATK workflow(of course you can get it from samtools workflow but remember the -GL need to change),
+#then i need to get fasta file, so the next command line
+$ angsd -i outgroup_aligned.bam -doFasta 2 -doCounts 1 -out gatk_anc -P 5
+$realSFS gatk_anc.saf.idx >outputUnfoldedSFS.sfs
+
+==================================
+#Without outgroup, get folded SFS
+#1
+$ angsd -bam bam.list \
+-anc your_ref.fa \
+-doSaf 1 \
+-GL 1 \
+-nThreads 10 \
+-fold 1 \
+-out outputFoldedSFS
+#2 
+$.../misc/realSFS outputFoldedSFS.saf.idx -P 5 > outputFoldedSFS.sfs
