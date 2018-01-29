@@ -10,12 +10,6 @@ $realSFS gatk_anc.saf.idx >outputUnfoldedSFS.sfs
 ==================================
 #Without outgroup, get folded SFS
 #1
-$ angsd -bam bam.list \
--anc your_ref.fa \
--doSaf 1 \
--GL 1 \
--nThreads 10 \
--fold 1 \
--out outputFoldedSFS
+$nice -n -20 /home/share/angsd-master/angsd -bam /disk5/jiangzy/fsc_sam/ancestral/bam.list -anc /disk5/jiangzy/fsc_sam/ancestral/anc.fa -ref /disk5/jiangzy/BGI_jiangzy_humilis/BGI_j_humilis.fa -doSaf 1 -GL 1 -C 50 -minMapQ 30 -minQ 20 -nThreads 10 -out samtools
 #2 
-$.../misc/realSFS outputFoldedSFS.saf.idx -P 5 > outputFoldedSFS.sfs
+
