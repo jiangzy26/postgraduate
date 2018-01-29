@@ -3,3 +3,14 @@ samtools faidx parus.fa
 #2 
 makeblastdb -in parus.fa -parse_seqids -dbtype nucl -out p_major_db
 #3
+blastn -query 12.fil.contigs.fa 
+-out 12.fil.contigs.fa.blast 
+-db /disk/parus-major/Parus_major/parus_major_2016_NC/parus.fa 
+-max_target_seqs 1 -evalue 1e-10 -num_threads 5 -outfmt 6 
+
+#4 this step, we sort the blast file
+sort -k1,1 -k4,4r DeleteGi.blast > blast.sort1
+#5
+python getMaxAlign.py
+#6
+python get1And2.py
