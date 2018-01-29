@@ -1,5 +1,0 @@
-#1 index the reference fasta file 
-samtools faidx parus.fa
-#2 
-makeblastdb -in parus.fa -parse_seqids -dbtype nucl -out p_major_db
-#3
