@@ -14,3 +14,42 @@ sort -k1,1 -k4,4r DeleteGi.blast > blast.sort1
 python getMaxAlign.py
 #6
 python get1And2.py
+#7
+python getf2_0.py
+python getf2_1.py
+python getf3_0.py
+python getf3_1.py
+#8
+cat f3_0.vcf > f4.vcf
+cat f3_1.vcf >> f4.vcf
+#9
+python changeChr1Chr2.py
+#10
+sort -k1,1 -k2,2n f4.vcfchangeChr1Chr2 > f4.vcfchangeChr1Chr2sort
+#11 get f5.vcf
+python changeChr1Chr2.py
+#12
+cat f0_0.vcf > f6.vcf
+cat f5.vcf >> f6.vcf
+#then we get f6.vcf file to do the next analysis
+
+==========================================================================
+#13
+/disk/share/vcftools_0.1.12b/bin/vcftools --vcf /disk-1/song/NHT130112/releaseData/re_call/sliding_win/f6.vcf --weir-fst-pop /disk-1/song/NHT130112/releaseData/re_call/sliding_win/fst/aToe/ABC.txt --weir-fst-pop /disk-1/song/NHT130112/releaseData/re_call/sliding_win/fst/aToe/DE.txt --fst-window-size 100000 --fst-window-step 100000 --out /disk-1/song/NHT130112/releaseData/re_call/sliding_win/fst/aToe/ABCDE100000
+#14
+/disk/share/vcftools_0.1.12b/bin/vcftools --vcf /disk-1/song/NHT130112/releaseData/re_call/sliding_win/f6.vcf --weir-fst-pop /disk-1/song/NHT130112/releaseData/re_call/sliding_win/fst/be/B.txt --weir-fst-pop /disk-1/song/NHT130112/releaseData/re_call/sliding_win/fst/be/E.txt --fst-window-size 100000 --fst-window-step 100000 --out /disk-1/song/NHT130112/releaseData/sliding_window/fst/fst/BE/BE100000
+#15 the next is plot with R
+setwd("C:/Users/jiangzy/Desktop/baitoubei")
+#install.packages('gap')
+library('gap')
+chro<-read.table("dishanque100.csv", header = TRUE, sep = ",")
+ops<- mht.control(logscale = FALSE, colors = rep(c("brown1","seagreen"),31))
+mhtplot(chro,ops,xlab = "", ylab = "fst", ylim = c(0,1))
+axis(2,lwd = 2, at = c(0,1))
+
+
+
+
+
+
+
