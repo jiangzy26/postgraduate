@@ -1,3 +1,4 @@
+#angsd version: 0.921-3-g40ac3d6 (htslib: 1.7-1-gaf40c73)
 #if you have ancestry, then you can get unfolded SFS, but if you haven't, it doesn't matter, you can get folded SFS
 ###########################
 #get unfolded SFS
@@ -10,7 +11,7 @@ $realSFS gatk_anc.saf.idx >outputUnfoldedSFS.sfs
 ==================================
 #Without outgroup(qhatever samtools or GATK, all will be fine, the example of the manual of angsd is the example of samtools), get folded SFS
 #1
-$nice -n -20 /home/share/angsd-master/angsd -bam /disk5/jiangzy/fsc_sam/ancestral/bam.list -anc /disk5/jiangzy/BGI_jiangzy_humilis/BGI_j_humilis.fa -doSaf 1 -GL 1 -fold 1  -nThreads 10 -out samtools_anc
+$nice -n -20 /disk5/jiangzy/software/angsd/angsd -bam /disk5/jiangzy/fsc_sam/ancestral/bam.list -anc /disk5/jiangzy/BGI_jiangzy_humilis/BGI_j_humilis.fa -doSaf 1 -GL 1 -fold 1 -nThreads 10 -out samtoolsFold
 #2 
 /home/share/angsd-master/misc/realSFS -P 5 /disk5/jiangzy/fsc_sam/ancestral/samtools_anc.saf.idx > /disk5/jiangzy/fsc_sam/ancestral/samtools_anc.sfs
 
