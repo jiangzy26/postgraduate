@@ -1,0 +1,3 @@
+LD(Linkage disequilibrium)用来决定两个loci的alleles是否关联。一般通过在两个loci上allele的频率决定。
+java -jar /home/share/beagle-4.1/beagle.21Jan17.6cc.jar gt=*.vcf out=*.vcf.beagle
+vcftools --gzvcf *.vcf.gz --out *.ld --hap-r2 --ld-window-bp 1000000
