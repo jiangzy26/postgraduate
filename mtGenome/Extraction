@@ -1,0 +1,3 @@
+extract mt genome from whole genome, MITObim
+$ python /home/share/MITObim-master/misc_scripts/interleave-fastqgz-MITOBIM.py 1_1_clean.fq.gz 1_2_clean.fq.gz > 1_inter.fastq 
+$ perl /home/share/MITObim-master/MITObim.pl -start 1 -end 30 -sample testpool -ref Salpinus_mt_genome -readpool 1_inter.fastq --quick ref_MT.fasta &> log & 
