@@ -1,0 +1,4 @@
+First step:
+to make input file with scrip: convert_vcf_to_dadi_input.pl
+then
+python DADI-Simulation.py poplist_ABC_DE.data no_mig False True
