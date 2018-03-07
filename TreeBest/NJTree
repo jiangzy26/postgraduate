@@ -1,0 +1,7 @@
+python /disk5/jiangzy/script/parseVCF.py -v /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf -o /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call -gq 30 -d 10 -m geno
+awk '{for(i=0;++i<=NF;)a[i]=a[i]?a[i] FS $i:$i}END{for(i=0;i++<NF;)print a[i]}' /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call > /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta
+treebest nj /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta > /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta.nj
+perl /disk5/jiangzy/script/tree4plot.pl /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta.nj /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta.nj.tree
+
+
+
