@@ -3,5 +3,9 @@ awk '{for(i=0;++i<=NF;)a[i]=a[i]?a[i] FS $i:$i}END{for(i=0;i++<NF;)print a[i]}' 
 treebest nj /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta > /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta.nj
 perl /disk5/jiangzy/script/tree4plot.pl /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta.nj /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.call.fasta.nj.tree
 
+python /disk5/jiangzy/script/parseVCF3.py -i /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf -o /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab 
+perl /disk5/jiangzy/script/vcf_tab_to_fasta_alignment.pl -i /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab > /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab.fasta 
+/home/share/treebest-1.9.2/treebest nj /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab.fasta > /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab.fasta.nj
+perl /disk5/jiangzy/script/tree4plot.pl /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab.fasta.nj /disk5/jiangzy/GATK/major_vcf/variants.concordanceTree.vcf.recode.vcf.snptab.fasta.nj.tree
 
 
