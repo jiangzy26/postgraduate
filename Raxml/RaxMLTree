@@ -1,0 +1,2 @@
+第一步是将vcf文件转为phy格式
+/home/share/RAxML-master/raxmlHPC-PTHREADS-AVX -s ./vc.phy -n gt -m GTRGAMMAI -T 5 -# 100 -f a -x 12546 -p 12546 -o Parus_major
