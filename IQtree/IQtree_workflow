@@ -1,0 +1,2 @@
+#model Test
+nice -n -20 /disk5/jiangzy/GATK/major_vcf/IQtree/iqtree-1.6.2-Linux/bin/iqtree -s /disk5/jiangzy/GATK/major_vcf/raxml/vc.phy -m MF -nt 10
