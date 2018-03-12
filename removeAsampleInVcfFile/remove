@@ -1,0 +1,1 @@
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/variants.concordanceTree.vcf.recode.vcf --remove /disk5/jiangzy/GATK/major_vcf/WithoutMajor/remove.txt
