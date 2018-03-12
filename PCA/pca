@@ -1,3 +1,14 @@
-/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/WithoutMajor.vcf --plink --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/vcf.out
-plink --ped /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/vcf.out.ped --map /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/vcf.out.map
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/WithoutMajor.vcf --plink --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/tmp
+
+plink --noweb --file tmp --make-bed --out tmp_bfile
+
+/home/share/gcta/gcta --bfile tmp_bfile --make-grm --out tmp_grm
+
+/home/share/gcta/gcta--grm tmp_grm --pca 3 --out tmp_pca
+
+library(ggplot2)
+setwd("C:/Users/jiangzy/Desktop/R")
+chro<-read.table("PLINK.csv",header=TRUE,sep=",")
+ggplot(chro, aes(x = pc1, y = pc2, z = pc3, colour = Species)) + geom_point(size = 3)+ coord_cartesian(xlim=c(-0.4,0.4), ylim=c(-0.4,0.4))
+
 
