@@ -1,0 +1,3 @@
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/WithoutMajor.vcf --plink --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/vcf.out
+plink --ped /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/vcf.out.ped --map /disk5/jiangzy/GATK/major_vcf/WithoutMajor/pca/vcf.out.map
+
