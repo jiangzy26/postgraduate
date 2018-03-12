@@ -1,0 +1,10 @@
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/WithoutMajor.vcf --plink --out tmp
+plink --ped tmp.ped --map tmp.map --recode12
+
+#在para中写参数
+frappe1.1_linux64 para
+
+setwd("C:/Users/jiangzy/Desktop")
+str=read.table("plink_result.txt")#需要去除前几列，只留后面的数字
+barplot(t(as.matrix(str)), col=rainbow(2),xlab="Individual #",ylab="Ancestry",border=NA)
+
