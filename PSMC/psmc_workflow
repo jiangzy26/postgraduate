@@ -1,1 +1,10 @@
+samtools mpileup -C50 -uf ref.fa aln.bam | bcftools view -c - | vcfutils.pl vcf2fq -d 10 -D 100 | gzip > diploid.fq.gz
+/disk/share/psmc-master/utils/fq2psmcfa -q20 diploid.fq.gz > diploid.psmcfa
+psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o diploid.psmc diploid.psmcfa
+perl /disk/share/psmc-master/utils/psmc2history.pl diploid.psmc | perl /disk/share/psmc-master/utils/history2ms.pl > ms-cmd.sh
+perl /disk/share/psmc-master/utils/psmc_plot.pl -u 2e-9 -g 2 -p diploid diploid.psmc
+
+perl /disk/share/psmc-master/utils/psmc_plot.pl -u 2e-9 -g 2 -p -M hf,hx,hui plot hf_1407diploid.psmc hx_1280diploid.psmc hui_1462diploid.psmc
+
+perl /disk/share/psmc-master/utils/psmc_plot.pl -u 2e-9 -g 2 -p -M hf,hf,hf,hf,hx,hx,hx,hx,hui,hui,hui,hui plot hf_1424.diploid.psmc hf_1425.diploid.psmc hf_1427.diploid.psmc hf_1522.diploid.psmc hx_1521.diploid.psmc hx_1510.diploid.psmc hx_1326.diploid.psmc hx_1280.diploid.psmc hui_TJK14007.diploid.psmc hui_1541.diploid.psmc hui_1536.diploid.psmc hui_1471.diploid.psmc
 
