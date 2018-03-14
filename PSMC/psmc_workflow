@@ -8,3 +8,14 @@ perl /disk/share/psmc-master/utils/psmc_plot.pl -u 2e-9 -g 2 -p -M hf,hx,hui plo
 
 perl /disk/share/psmc-master/utils/psmc_plot.pl -u 2e-9 -g 2 -p -M hf,hf,hf,hf,hx,hx,hx,hx,hui,hui,hui,hui plot hf_1424.diploid.psmc hf_1425.diploid.psmc hf_1427.diploid.psmc hf_1522.diploid.psmc hx_1521.diploid.psmc hx_1510.diploid.psmc hx_1326.diploid.psmc hx_1280.diploid.psmc hui_TJK14007.diploid.psmc hui_1541.diploid.psmc hui_1536.diploid.psmc hui_1471.diploid.psmc
 
+
+
+
+    utils/fq2psmcfa -q20 diploid.fq.gz > diploid.psmcfa
+	/home/share/psmc-master/utils/splitfa 15_C.psmcfa > 15_C_split.psmcfa
+
+    /home/share/psmc-master/psmc -N25 -t15 -r5 -p "4+30*2+4+6+10" -o 15_C.psmc 15_C.psmcfa 
+	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+30*2+4+6+10" \
+	    -o round-{}.psmc split.fa | sh
+    cat diploid.psmc round-*.psmc > combined.psmc
+	utils/psmc_plot.pl -pY50000 combined combined.psmc
