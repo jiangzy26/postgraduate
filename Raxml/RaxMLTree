@@ -1,2 +1,13 @@
-第一步是将vcf文件转为phy格式
-/home/share/RAxML-master/raxmlHPC-PTHREADS-AVX -s ./vc.phy -n gt -m GTRGAMMAI -T 5 -# 100 -f a -x 12546 -p 12546 -o Parus_major
+python /disk5/jiangzy/script/parseVCF.py -v /disk5/jiangzy/GATK/major_vcf/forRaxML/variants.concordanceTree.vcf.recode.vcf -o /disk5/jiangzy/GATK/major_vcf/forRaxML/variants.concordanceTree.vcf.recode.vcf.calls -m geno
+
+awk '{for(i=3;i<NF;i++)printf("%s ",$i);print $NF}' /disk5/jiangzy/GATK/major_vcf/forRaxML/variants.concordanceTree.vcf.recode.vcf.calls > /disk5/jiangzy/GATK/major_vcf/forRaxML/variants.concordanceTree.vcf.recode.vcf_new.calls
+
+python zhang.py variants.concordanceTree.vcf.recode.vcf_new.calls
+
+awk '{for(i=0;++i<=NF;)a[i]=a[i]?a[i] FS $i:$i}END{for(i=0;i++<NF;)print a[i]}' /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new.calls > /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new_awk.fasta
+
+sed -n 's/ //pg' /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new_awk.fasta > /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new_awk_xiugai.fasta
+
+sh /home/share/RAxML-master/usefulScripts/convertFasta2Phylip.sh /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new_awk_xiugai.fasta > /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new_awk_xiugai.fasta.phy
+
+/home/share/RAxML-master/raxmlHPC-PTHREADS -s /disk5/jiangzy/GATK/major_vcf/forRaxML/new.variants.concordanceTree.vcf.recode.vcf_new_awk_xiugai.fasta.phy -o Parus_major -n jm19 -m ASC_GTRGAMMA --asc-corr=lewis -T 5 -# 100 -f a -x 12564 -p 12564
