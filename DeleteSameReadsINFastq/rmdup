@@ -1,0 +1,12 @@
+fh = '/disk5/jiangzy/test/read.fq'
+fastq_dict1 = {}
+with open(fh) as fastq:
+    for index, line in enumerate(fastq):
+        if index % 4 == 0:
+            seqname = line
+            fastq_dict1[seqname] = ''
+        else:
+            fastq_dict1[seqname] += line
+with open('/disk5/jiangzy/test/rmdup.fq','w') as fw:
+    for keys, val in fastq_dict1.items():
+        fw.write('\n%s%s' % (keys,val))
