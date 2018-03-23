@@ -1,0 +1,6 @@
+g = a+[s/(1 − s)], where s is the
+expected adult survival rate which is recorded as 80% in wild
+common carp, and a is sexual maturation age that is 3 years
+for wild common carp. Therefore, the generation time used
+in the PSMC modeling was determined as: g = 3+[0.80/
+(1 − 0.80)] = 7.
