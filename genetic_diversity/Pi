@@ -1,0 +1,9 @@
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/Pi/edge/edge.vcf.recode.vcf --out edgePi --window-pi 1000000
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/Pi/central/central.vcf.recode.vcf --out centralPi --window-pi 1000000
+
+setwd("C:/Users/jiangzy/Desktop/R/Pi")
+library('gap')
+chro<-read.table("edgePi.csv", header = TRUE, sep = ",")
+ops<- mht.control(logscale = FALSE, colors = rep(c("brown1","seagreen"),31))
+mhtplot(chro,ops,xlab = "", ylab = "Pi", ylim = c(0,0.003),pch = 19)
+axis(2,lwd = 2, at = c(0,0.003))
