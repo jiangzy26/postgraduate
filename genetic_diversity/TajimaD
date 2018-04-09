@@ -1,0 +1,6 @@
+1st: population list
+2nd: get population vcf file
+3rd: do the TajimaD analysis
+/home/share/vcftools_0.1.13/bin/vcftools -vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/use.vcf -keep centralList.txt-out central.vcf -recode
+/home/share/vcftools_0.1.13/bin/vcftools -vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/TajimaD/edge/edge.vcf.recode.vcf --outedge --TajimaD 1000000
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/TajimaD/central/central.vcf.recode.vcf --out central --TajimaD 1000000
