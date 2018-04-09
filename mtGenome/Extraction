@@ -4,3 +4,11 @@ $ perl /home/share/MITObim-master/MITObim.pl -start 1 -end 30 -sample testpool -
 miraconvert -f maf -t fasta -r C testpool-Salpinus_mt_genome_out.maf output_prefix
 ###"sample-ref_out_sample.unpadded.fasta" is the right file in the last interation.
 ###after miraconver, output_prefix_testpools.inpadded.fasta is the target file.
+
+
+
+#18th sample
+python /home/share/MITObim-master/misc_scripts/interleave-fastqgz-MITOBIM.py /disk5/jiangzy/original_data/18_1_clean.fq /disk5/jiangzy/original_data/18_2_clean.fq > 18_inter.fastq 
+python /disk5/jiangzy/mt/18/rmdup18.py
+perl /home/share/MITObim-master/MITObim.pl -start 1 -end 30 -sample testpool -ref Salpinus_mt_genome -readpool 18_duplicate.fastq --quick /disk5/jiangzy/mt/GroundTit_ref_MT.fasta &> log & 
+miraconvert -f maf -t fasta -r C /disk5/jiangzy/mt/1/iteration17/testpool-Salpinus_mt_genome_assembly/testpool-Salpinus_mt_genome_d_results/testpool-Salpinus_mt_genome_out.maf output_prefix
