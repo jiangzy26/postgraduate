@@ -1,6 +1,15 @@
 1st: population list
 2nd: get population vcf file
 3rd: do the TajimaD analysis
-/home/share/vcftools_0.1.13/bin/vcftools -vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/use.vcf -keep centralList.txt-out central.vcf -recode
-/home/share/vcftools_0.1.13/bin/vcftools -vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/TajimaD/edge/edge.vcf.recode.vcf --outedge --TajimaD 1000000
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/f_use.vcf --keep centralList.txt --out central.vcf --recode
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/f_use.vcf --keep edgeList.txt --out edge.vcf --recode
 /home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/TajimaD/central/central.vcf.recode.vcf --out central --TajimaD 1000000
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/TajimaD/edge/edge.vcf.recode.vcf --out edge --TajimaD 1000000
+
+
+setwd("C:/Users/jiangzy/Desktop/R/TajimaD")
+dat <- read.table('centralTajima.csv',header = TRUE,sep = ",")
+library(gap)
+ops <- mht.control(logscale = FALSE, colors = rep(c("brown1","seagreen"), 31))
+mhtplot(dat,ops,xlab = "", ylab = "Tajima", ylim = c(-4,4))
+axis(2, lwd = 2, at = c(-4,0,4))
