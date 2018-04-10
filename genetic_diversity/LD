@@ -1,0 +1,8 @@
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/final_use.vcf --keep /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edgeList.txt --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edge.vcf --recode
+/home/share/vcftools_0.1.13/bin/vcftools --vcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/final_use.vcf --keep /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/centralList.txt --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/central.vcf --recode
+
+java -jar /home/share/beagle-4.1/beagle.21Jan17.6cc.jar gt=/disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/central.vcf.recode.vcf out=/disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/central.beagle
+java -jar /home/share/beagle-4.1/beagle.21Jan17.6cc.jar gt=/disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edge.vcf.recode.vcf out=/disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edge.beagle
+
+/home/share/vcftools_0.1.13/bin/vcftools --gzvcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/central.beagle.vcf.gz --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/central.beagle.ld --hap-r2 --ld-window-bp 1000000
+/home/share/vcftools_0.1.13/bin/vcftools --gzvcf /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edge.beagle.vcf.gz --out /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edge.beagle.ld --hap-r2 --ld-window-bp 1000000
