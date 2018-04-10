@@ -1,0 +1,9 @@
+python /disk-3/zhangdezhi/VCF_processing-master/parseVCF.py -v input.vcf -o input.vcf.calls -m geno
+python /disk-3/zhangdezhi/VCF_processing-master/mergeCalls.py -f *.calls -m all -I *.fai -o *.calls.merge (.fai为参考基因组的fai文件)
+python /disk-3/zhangdezhi/VCF_processing-master/egglib_sliding_window.py -i *.calls.merge -o *.calls.merge.dxy -w 1827 -s 1827 -m 10 -a dxy -p "High[H-101,H-103,H-104,H-105,H-118,H-119,H-120,H-121,H-122,H-123,H-201];Low[L-108,L-110,L-111,L-112,L-113,L-114,L-115,L-116,L-117,L-202,L-203,L-204]"  (### -w和-s分别表示窗口长度和步长)
+
+
+
+python /disk-3/zhangdezhi/VCF_processing-master/parseVCF.py -v /disk/gtdata/Dxy/WithoutMajor.vcf -o /disk/gtdata/Dxy/WithoutMajor.vcf.calls -m geno
+python /disk-3/zhangdezhi/VCF_processing-master/mergeCalls.py -f /disk/gtdata/Dxy/WithoutMajor.vcf.calls -m all -I /disk/BGI_jiangzy_humilis/BGI_j_humilis.fa.fai -o /disk/gtdata/Dxy/WithoutMajor.vcf.calls.merge 
+python /disk-3/zhangdezhi/VCF_processing-master/egglib_sliding_window.py -i /disk/gtdata/Dxy/WithoutMajor.vcf.calls.merge -o /disk/gtdata/Dxy/WithoutMajor.vcf.calls.merge.dxy -w 1827 -s 1827 -m 10 -a dxy -p "central[Ph10,Ph11,Ph12,Ph13,Ph14,Ph15,Ph16,Ph17,Ph18];edge[Ph01,Ph02,Ph03,Ph04,Ph05,Ph06,Ph07,Ph08,Ph09]"
