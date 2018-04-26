@@ -1,0 +1,14 @@
+software: PopLDdecay
+
+/disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/PopLDdecay/PopLDdecay3.31/bin/PopLDdecay -InVCF /disk5/jiangzy/GATK/major_vcf/WithoutMajor/test_LD/ld_use.vcf -OutStat centralLD -SubPop /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/central/centralList.txt
+/disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/PopLDdecay/PopLDdecay3.31/bin/PopLDdecay -InVCF /disk5/jiangzy/GATK/major_vcf/WithoutMajor/test_LD/ld_use.vcf -OutStat edgeLD -SubPop /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/edge/edgeList.txt
+
+
+perl /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/PopLDdecay/PopLDdecay3.31/bin/Plot_MutiPop.pl -maxX 20 -inList /disk5/jiangzy/GATK/major_vcf/WithoutMajor/genetic_diversity/chrom/LD/LDdecayResult.list -output Fig -bin2 2000
+
+
+
+List Format 
+
+/disk5/jiangzy/GATK/major_vcf/WithoutMajor/test_LD/centralLD.stat.gz  central
+/disk5/jiangzy/GATK/major_vcf/WithoutMajor/test_LD/edgeLD.stat.gz  edge
