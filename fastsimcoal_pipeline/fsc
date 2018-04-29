@@ -15,3 +15,8 @@ $nice -n -20 /disk5/jiangzy/software/angsd/angsd -bam /disk5/jiangzy/fsc_sam/anc
 #2 
 /home/share/angsd-master/misc/realSFS -P 5 /disk5/jiangzy/fsc_sam/ancestral/samtools_anc.saf.idx > /disk5/jiangzy/fsc_sam/ancestral/samtools_anc.sfs
 
+
+
+/disk/share/angsd-0.910/angsd -bam /disk-3/Phylloscopus_reseq_data/fsc26/pophf -anc /disk-3/Phylloscopus_reseq_data/wood_warbler/DU-002-26.gapcloser.fa -doSaf 1 -GL 1 -fold 1 -nThreads 5 -out hfFold &
+/disk/share/angsd-0.910/angsd -bam /disk-3/Phylloscopus_reseq_data/fsc26/pophx -anc /disk-3/Phylloscopus_reseq_data/wood_warbler/DU-002-26.gapcloser.fa -doSaf 1 -GL 1 -fold 1 -nThreads 5 -out hxFold &
+/disk/share/angsd-0.910/misc/realSFS -P 5 /disk-3/Phylloscopus_reseq_data/fsc26/hfFold.saf.idx /disk-3/Phylloscopus_reseq_data/fsc26/hxFold.saf.idx >/disk-3/Phylloscopus_reseq_data/fsc26/hf_hx.sfs &
