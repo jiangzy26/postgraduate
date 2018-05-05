@@ -16,7 +16,14 @@ $nice -n -20 /disk5/jiangzy/software/angsd/angsd -bam /disk5/jiangzy/fsc_sam/anc
 /home/share/angsd-master/misc/realSFS -P 5 /disk5/jiangzy/fsc_sam/ancestral/samtools_anc.saf.idx > /disk5/jiangzy/fsc_sam/ancestral/samtools_anc.sfs
 
 
-
+#get sfs data, but just one line number
 /disk/share/angsd-0.910/angsd -bam /disk-3/Phylloscopus_reseq_data/fsc26/pophf -anc /disk-3/Phylloscopus_reseq_data/wood_warbler/DU-002-26.gapcloser.fa -doSaf 1 -GL 1 -fold 1 -nThreads 5 -out hfFold &
 /disk/share/angsd-0.910/angsd -bam /disk-3/Phylloscopus_reseq_data/fsc26/pophx -anc /disk-3/Phylloscopus_reseq_data/wood_warbler/DU-002-26.gapcloser.fa -doSaf 1 -GL 1 -fold 1 -nThreads 5 -out hxFold &
 /disk/share/angsd-0.910/misc/realSFS -P 5 /disk-3/Phylloscopus_reseq_data/fsc26/hfFold.saf.idx /disk-3/Phylloscopus_reseq_data/fsc26/hxFold.saf.idx >/disk-3/Phylloscopus_reseq_data/fsc26/hf_hx.sfs &
+
+#get 2d SFS
+sed -i '1i 1 observation' * 
+sed -i '2i d0_0 d0_1 d0_2 d0_3 d0_4 d0_5 d0_6 d0_7 d0_8 d0_9 ' *
+awk 'NR==3{$1="d1_0"}NR==4{$1="d1_1"}NR==5{$1="d1_2"}NR==6{$1="d1_3"}NR==7{$1="d1_4"}NR==8{$1="d1_5"}NR==9{$1="d1_6"}NR==10{$1="d1_7"}NR==11{$1="d1_8"}NR==12{$1="d1_9"}{print}' test.txt > use.sfs
+
+
