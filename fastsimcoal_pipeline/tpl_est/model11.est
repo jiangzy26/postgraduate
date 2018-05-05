@@ -1,0 +1,33 @@
+// Search ranges and rules file
+// ****************************
+
+[PARAMETERS]
+//#isInt? #name   #dist.#min  #max 
+//all Ns are in number of haploid individuals
+1  ANCSIZE     unif  100   100000   output
+
+
+1  NPOP1     unif  100   1000000   hide
+1  NPOP2     unif  100   1000000   hide
+
+1  N_E_PLUS     unif  100   1000000   hide
+1  N_C_PLUS     unif  100   1000000   hide
+
+1  T_DIV_PLUS     unif  100   1000000   hide
+
+1  Tc     unif  100   1000000   output
+
+
+[RULES]
+
+[COMPLEX PARAMETERS]
+
+1 Ne = NPOP1 + N_E_PLUS output
+1 Nc = NPOP2 + N_C_PLUS output
+
+
+0 RESIZE = ANCSIZE / NPOP2 hide
+0 RES_C = Nac / Nc hide
+0 RES_E = Nae / Ne hide
+
+0 TDIV = Tc + T_DIV_PLUS output
