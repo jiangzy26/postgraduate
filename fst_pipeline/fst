@@ -9,7 +9,8 @@ blastn -query 12.fil.contigs.fa
 -max_target_seqs 1 -evalue 1e-10 -num_threads 5 -outfmt 6 
 
 #4 this step, we sort the blast file
-sort -k1,1 -k4,4r DeleteGi.blast > blast.sort1
+sort -k2,2 -k 1,1 -k4,4nr use.blast > use.blast.sort
+#sort -k1,1 -k4,4r DeleteGi.blast > blast.sort1
 #5
 python getMaxAlign.py
 #6
